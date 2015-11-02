@@ -13,7 +13,11 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
-  api.addFiles('subzero.js');
+  api.use([
+    'templating',
+  ], 'client');
+  api.addFiles(['subZero.html'], 'client');
+  api.addFiles(['subZero.js'], 'client');
 });
 
 Package.onTest(function(api) {
