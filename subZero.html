@@ -1,0 +1,7 @@
+<template name="subZero">
+  {{#unless Template.subscriptionsReady}}
+    {{> Template.dynamic template=waitingTemplate}}
+  {{else}} 
+    {{> Template.dynamic template=template}}  
+  {{/unless}}
+</template>

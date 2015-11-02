@@ -1,5 +1,5 @@
-_________
 TODO:
+_________
 * Add ensureSignedInSupport
 * Allow for session or reactive var support so the template and set a read or not state in addition.
 * >>>> Allow for a function to be passed to get subscriptions
