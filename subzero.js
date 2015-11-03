@@ -11,3 +11,13 @@ Template.subZero.onCreated(function(){
     self.subscribe.apply(self, sub);
   });
 });
+
+Template.subZero.onRendered(function(){
+  console.log('RENDERED SUBZERO TEMP, this:', this);
+});
+
+Template.subZero.onDestroyed(function(){
+  console.log("SUBZERO CONTROLLER TEMPLATE DESTROYED, this:", this);
+  //if(this.comp) this.comp.stop();
+  //else console.warn('no this.comp');
+});
