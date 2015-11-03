@@ -1,12 +1,13 @@
 Template.subZero.onCreated(function(){
   var self = this;
   var subs = FlowRouter.current().route.options.subs;
+  var trackFun = FlowRouter.current().route.options.trackFun;
+
+  if(trackFun) self.autorun(function(){
+    trackFun.call(self);
+  });
 
   _.each( subs, function(sub){
-    if(_.isFunction(sub)){
-      sub.call(self);
-    }else{
-      self.subscribe.apply(self, sub);
-    }
+    self.subscribe.apply(self, sub);
   });
 });
