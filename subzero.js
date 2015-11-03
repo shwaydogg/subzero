@@ -4,7 +4,7 @@ Template.subZero.onCreated(function(){
 
   _.each( subs, function(sub){
     if(_.isFunction(sub)){
-      sub.call(self, 'teamMarks');
+      sub.call(self);
     }else{
       self.subscribe.apply(self, sub);
     }
