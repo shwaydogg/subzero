@@ -2,16 +2,14 @@ Template.subZero.onCreated(function(){
   var self = this;
   self.theTemplate = new ReactiveVar(self.data.template());
 
-  self.autorun( () => {
+  self.autorun( function() {
     var subs = FlowRouter.current().route.options.subs;
+    var trackFun = FlowRouter.current().route.options.trackFun;
+    //On a route change to another route using the same template we need to trigger this autorun:
     self.theTemplate.get(); 
     _.each( subs, sub => self.subscribe.apply(self, sub) );
-  });
 
-  self.autorun( () => {
-    var trackFun = FlowRouter.current().route.options.trackFun;
-    self.theTemplate.get(); 
-    if(trackFun) trackFun.call(self);
+    if(trackFun) Tracker.autorun( () => trackFun.call(self) );
   });
 
 });
