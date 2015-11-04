@@ -1,10 +1,7 @@
 <template name="subZero">
-  {{blazeLog 'top'}}
   {{#unless Template.subscriptionsReady}}
-    {{blazeLog 'waiting'}}
     {{> Template.dynamic template=waitingTemplate}}
   {{else}} 
-    {{blazeLog 'ready'}}
-    {{> Template.dynamic template=template}}  
+    {{> theTemplate}}
   {{/unless}}
 </template>
