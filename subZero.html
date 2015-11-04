@@ -2,6 +2,6 @@
   {{#unless Template.subscriptionsReady}}
     {{> Template.dynamic template=waitingTemplate}}
   {{else}} 
-    {{> theTemplate}}
+    {{> Template.dynamic template=template}}
   {{/unless}}
 </template>
