@@ -55,3 +55,9 @@ Will probably change the name, but got to it by way of:
 Subscription Template -> subTemp -> subZero 
 
 Better name `flowControl`?
+
+___
+
+Thanks thanks thus far to:
+* @andersr
+* Meteor NYC Meetup
