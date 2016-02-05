@@ -1,7 +1,9 @@
 Template.subZero.onCreated(function(){
   this.ready = new ReactiveVar();
   this.autorun( () =>{
+    
     this.ready.set(false);
+
     var subs = FlowRouter.current().route.options.subs;
     var trackFun = FlowRouter.current().route.options.trackFun;
     var readyTracker = FlowRouter.current().route.options.readyTracker;
@@ -17,7 +19,10 @@ Template.subZero.onCreated(function(){
         //rerun in the larger scope:
     if(trackFun){Tracker.autorun( () => trackFun.call(this) ); }
     if(readyTracker){
-      Tracker.autorun( () => readyTracker.call(this) );
+      Tracker.autorun(() =>{
+        this.ready.set(false); 
+        readyTracker.call(this);
+      });
     }else{
       this.ready.set(true);
     }
@@ -25,6 +30,10 @@ Template.subZero.onCreated(function(){
 });
 
 Template.subZero.helpers({ 
+  loginNeeded: function(){
+    var requireLogin = Template.instance().data.requireLogin; 
+    return requireLogin && requireLogin() && !Meteor.user();
+  },
   isReady: ()=> {
     return  Template.instance().ready.get() && 
             Template.instance().subscriptionsReady()

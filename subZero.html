@@ -1,7 +1,16 @@
 <template name="subZero">
-  {{#if isReady}}
-    {{> Template.dynamic template=template}}
-  {{else}} 
-    {{> Template.dynamic template=waitingTemplate}}
+  {{#if loginNeeded}}
+    {{#if loggingIn}}
+      {{> Template.dynamic template=waitingTemplate}}
+    {{else}}
+      {{> Template.dynamic template=signInTemplate}}
+    {{/if}}
+  {{else}}
+    {{#if isReady}}
+      {{> Template.dynamic template=template}}
+    {{else}} 
+      {{> Template.dynamic template=waitingTemplate}}
+    {{/if}}
+
   {{/if}}
 </template>
